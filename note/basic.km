@@ -533,6 +533,28 @@
                                     "priority": 2
                                 },
                                 "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ci1rplgp3zs0",
+                                    "created": 1645451033778,
+                                    "text": "cctype",
+                                    "font-weight": "bold",
+                                    "note": "1. 封装了C的ctype.h的函数\n2. ctype.h中的操作字符函数是用宏定义实现的",
+                                    "priority": 2
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwfjs8wwmo0",
+                                    "created": 1648565083698,
+                                    "text": "遍历",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. for循环\nstring s = \"abc\";\nfor (char c : s){\n\tcout << c << endl;\n}\n// 可以改变值\nfor (char &c : s){\n\tcout << c << endl;\n}\n#### 2. 下标遍历\nstring s = \"abc\";\nsize_t n = s.size();\n// 可以改变值\nfor (int i = 0; i < n; ++ i){\n\tcout << s[i] << endl;\n}"
+                                },
+                                "children": []
                             }
                         ]
                     },
@@ -543,7 +565,7 @@
                             "text": "IO类型",
                             "priority": 1,
                             "font-weight": "bold",
-                            "expandState": "expand",
+                            "expandState": "collapse",
                             "note": "## 流iostream\n\t- iostream/istream/ostream\n    - wiostream/wistream/wostream\n## 文件fstream\n\t- fstream/ifstream/ofstream\n    - wfstream/wifstream/wofstream\n## 字符串sstream\n\t- stringstream/istringstream/ostringstream\n    - wstringstream/wistringstream/wostringstream\n\n## 类型对象操作\n- **IO对象无拷贝或赋值**\n- "
                         },
                         "children": [
@@ -562,7 +584,7 @@
                                 "data": {
                                     "id": "ciw85wu4iy00",
                                     "created": 1648544248820,
-                                    "text": "ssstream",
+                                    "text": "sstream",
                                     "priority": 2,
                                     "font-weight": "bold",
                                     "note": "- sstream ss(s);\n- ss.str(); 返回strm所保存的拷贝\n- void ss.str(s); 将s拷贝到strm中"
@@ -570,6 +592,91 @@
                                 "children": []
                             }
                         ]
+                    },
+                    {
+                        "data": {
+                            "id": "ciwfn5f0mlk0",
+                            "created": 1648565347458,
+                            "text": "vector",
+                            "priority": 1,
+                            "font-weight": "bold",
+                            "note": "- .size() 元素个数\n- .max_size() 可保存的最大数目\n- .empty() 是否为空"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ciwfubyu5i80",
+                                    "created": 1648565910266,
+                                    "text": "构造函数",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "1. 默认初始化 \n- vector<int> val1;\n2. 拷贝初始化\n- vector<int> val2(val1);\n3. 范围初始化\n- vector<int> val3(val1.begin(), val1.end());\n4. 列表初始化\n- vector<int> val4{1, 2, 3};\n- vector<int> val5 = {1, 2, 3};\n5. 初始化n个\n- vector<int> val2(n, 1);"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwg4pidd280",
+                                    "created": 1648566723387,
+                                    "text": "赋值和交换",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 赋值\nvector<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换\na.push_back(1);\nb.push_back(3);\na.swap(b);\nswap(a, b);\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwgcawe5y00",
+                                    "created": 1648567318497,
+                                    "text": "增删查改",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 增\n1. push_back(args)\n- 在末尾添加args\n2. insert(iterator, args)\n- 在iterator后面添加args\n3. insert(iterator, 2, args);\n- 在iterator后面添加2个args\n4. emplace(iterator, 1);\n- 使用inits在iterator下构造一个元素\n"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "ciwfnfsktl40",
+                            "created": 1648565370045,
+                            "text": "deque",
+                            "font-weight": "bold",
+                            "priority": 1
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ciwfnkpdvts0",
+                            "created": 1648565380736,
+                            "text": "list",
+                            "font-weight": "bold",
+                            "priority": 1
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ciwfobdh3e00",
+                            "created": 1648565438789,
+                            "text": "forward_list",
+                            "font-weight": "bold",
+                            "priority": 1
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ciwfohb9sc80",
+                            "created": 1648565451717,
+                            "text": "array",
+                            "font-weight": "bold",
+                            "priority": 1
+                        },
+                        "children": []
                     }
                 ]
             },
