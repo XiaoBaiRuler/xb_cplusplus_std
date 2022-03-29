@@ -1,0 +1,624 @@
+{
+    "root": {
+        "data": {
+            "id": "civz7gdch200",
+            "created": 1648518979716,
+            "text": "C++"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "civziv7ij0o0",
+                    "created": 1648519874021,
+                    "text": "预处理器",
+                    "priority": 1,
+                    "note": "1. 类似C的\n#define...\n#include\n2. using\nusing namespace std;\nusing namespace::name;\nusing double = x;"
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "civzy77bpzc0",
+                    "created": 1648521075593,
+                    "text": "常量",
+                    "font-weight": "bold",
+                    "priority": 1,
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "ciw1108ilcw0",
+                            "created": 1648524116630,
+                            "text": "整型",
+                            "font-weight": "bold",
+                            "note": "- 10\n- 017\n- 0x1a",
+                            "priority": 4
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgp9wmm5cds0",
+                            "created": 1640525926935,
+                            "text": "字符和字符串",
+                            "priority": 2,
+                            "font-weight": "bold",
+                            "note": "- **字符串/C风格字符串: 带前缀表示使用字符**\n- 常用转义字符\n\t- \\n \\r\n    ",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgp9ygx3ag00",
+                                    "created": 1640526071265,
+                                    "text": "字符前缀",
+                                    "priority": 3,
+                                    "expandState": "collapse"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgp9z2hrqxs0",
+                                            "created": 1640526118227,
+                                            "text": "u'a': char16_t ",
+                                            "font-weight": "bold"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgp9zk1w9m80",
+                                            "created": 1640526156450,
+                                            "text": "U'a': char32_t",
+                                            "font-weight": "bold"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgp9zv3hoiw0",
+                                            "created": 1640526180491,
+                                            "text": "u8'a': UTF-8",
+                                            "font-weight": "bold"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgpa03j518g0",
+                                            "created": 1640526198851,
+                                            "text": "L'a': wchar_t",
+                                            "font-weight": "bold"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgp9wqlzsag0",
+                            "created": 1640525935633,
+                            "text": "浮点型",
+                            "expandState": "expand",
+                            "font-weight": "bold",
+                            "priority": 4,
+                            "note": "- float: 123.2f\n- long double: 123.2L"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgp9wsvbank0",
+                            "created": 1640525940550,
+                            "text": "指针字面值: nullptr",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "与NULL的区别\n- NULL int 0 4个字节\n- nullptr void * 8个字节"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "ciw15y6nzxk0",
+                    "created": 1648524503986,
+                    "text": "类型",
+                    "font-weight": "bold",
+                    "priority": 1,
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgp9i2lqaow0",
+                            "created": 1640524786276,
+                            "text": "算术类型",
+                            "priority": 2,
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgp9i5s9go00",
+                                    "created": 1640524793201,
+                                    "text": "bool[1]",
+                                    "priority": 3
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgp9iaqvaoo0",
+                                    "created": 1640524804001,
+                                    "text": "字符型",
+                                    "note": "- char[1]\n- wchar_t[2]\n- char16_t[2]\n- char32_t[4]",
+                                    "priority": 3
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgp9islbeag0",
+                                    "created": 1640524842847,
+                                    "text": "整型",
+                                    "note": "- short[2]\n- int[2]\n- long[4]\n- long long[8]",
+                                    "priority": 3
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgp9jb4rvo00",
+                                    "created": 1640524883206,
+                                    "text": "浮点型",
+                                    "note": "- float[6位有效数字]\n- double[10位有效数字]\n- long double",
+                                    "priority": 3
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgp9plwi2cg0",
+                                    "created": 1640525376835,
+                                    "text": "是否有符号",
+                                    "note": "- signed\n- unsigned",
+                                    "priority": 3
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgp9i94v6vc0",
+                            "created": 1640524800494,
+                            "text": "void: 空类型",
+                            "priority": 2,
+                            "font-weight": "bold"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgp9qrgb3vc0",
+                            "created": 1640525467281,
+                            "text": "数据溢出",
+                            "priority": 2,
+                            "expandState": "expand",
+                            "note": "1. 无符号溢出，结果为初始值对总数的余数\n2. 有符号溢出，结果为未定义\n3. 大范围 -> 小范围: 出现精度丢失"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "ciw19aetnts0",
+                    "created": 1648524765693,
+                    "text": "变量",
+                    "font-weight": "bold",
+                    "priority": 1,
+                    "note": "- 变量定义: 类型说明符 + 变量名\n- 什么是对象：具有某种数据类型的内存空间",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgqwyjskptc0",
+                            "created": 1640692523006,
+                            "text": "初始化",
+                            "expandState": "collapse",
+                            "font-weight": "bold",
+                            "priority": 2
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgqwynu7irc0",
+                                    "created": 1640692531812,
+                                    "text": "默认初始化",
+                                    "expandState": "expand",
+                                    "note": "- 函数体之外:初始化为0\n- 函数体之内:未定义",
+                                    "priority": 3,
+                                    "font-weight": "bold"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgqxtkyhoo00",
+                                    "created": 1640694954830,
+                                    "text": "列表初始化",
+                                    "note": "int a = {0};\nint b{0};\n\n//如果列表初始化且初始值存在丢失信息的风险，则编译器将报错\n// int a = {0, 1};\n",
+                                    "expandState": "expand",
+                                    "priority": 3,
+                                    "font-weight": "bold"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgqwxf610zk0",
+                                    "created": 1640692434572,
+                                    "text": "初始化和赋值的区别",
+                                    "expandState": "expand",
+                                    "layout_right_offset": {
+                                        "x": -8,
+                                        "y": 5
+                                    },
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "1. 初始化：创建变量时赋予一个初始值\n2. 赋值：把对象的当前值擦除，以一个新值替代"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgqyc5igya80",
+                            "created": 1640696410129,
+                            "text": "作用域: 以{}分割",
+                            "font-weight": "bold",
+                            "expandState": "expand",
+                            "priority": 3,
+                            "note": "- 允许在内层作用域中重新定义外层作用域已有的名字"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgqye9pury00",
+                            "created": 1640696576011,
+                            "text": "引用",
+                            "font-weight": "bold",
+                            "expandState": "expand",
+                            "priority": 2,
+                            "note": "1. **为对象起的别名[不是对象]，引用将和它的初始值对象绑定在一起，无法更改**\n  - 指针也是对象\n  => 存在指针的引用\n  int i = 42;\n  int *p = &i;\n  // 从右往左读(离变量名越近的符号，最直接影响变量类型)\n  int *&r = p;\n\n2. **必须初始化，且引用的类型和与之绑定的对象要严格匹配**"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgqz2eko4rs0",
+                            "created": 1640698467321,
+                            "text": "指针",
+                            "font-weight": "bold",
+                            "expandState": "collapse",
+                            "priority": 2
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgqzhzhtj4w0",
+                                    "created": 1640699688324,
+                                    "text": "指针值",
+                                    "font-weight": "bold",
+                                    "expandState": "expand",
+                                    "note": "1. 指向一个对象\n2. 指向相邻对象所占空间的下一位置\n3. nullptr",
+                                    "priority": 3
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgqz3utffw00",
+                                    "created": 1640698581043,
+                                    "text": "对象，可以赋值，拷贝等",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "expandState": "expand",
+                                    "note": "void*：特殊的指针类型，可以存放任意对象的地址"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgqzgg0v3rc0",
+                                    "created": 1640699567575,
+                                    "text": "不必要初始化(未初始化为未定义值)，但是类型必须和所指对象类型一致",
+                                    "font-weight": "bold",
+                                    "priority": 3
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "ciw1iz8al880",
+                    "created": 1648525524995,
+                    "text": "关键字",
+                    "font-weight": "bold",
+                    "priority": 1
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgsc289nmy80",
+                            "created": 1640836687980,
+                            "text": "const",
+                            "font-weight": "bold",
+                            "priority": 1,
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgsc2j6857k0",
+                                    "created": 1640836711717,
+                                    "text": "定义常量，必须初始化，且不能改变",
+                                    "font-weight": "bold"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgsc2w8nkxc0",
+                                    "created": 1640836740162,
+                                    "text": "作用",
+                                    "expandState": "expand"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgsc5t63f9c0",
+                                            "created": 1640836968569,
+                                            "text": "1. 可以文件之间共享",
+                                            "font-weight": "bold",
+                                            "note": "// test.cc\nconst int a = 1000;\n// testa.cc\n#include \"test.cc\"\nextern const int a;"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgyn9oxc00g0",
+                                    "created": 1641477664738,
+                                    "text": "修饰复合类型",
+                                    "priority": 2,
+                                    "expandState": "expand"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgyn62mbd6w0",
+                                            "created": 1641477381090,
+                                            "text": "对常量的引用：不能修改；但是能够用任意表达式作为初始值",
+                                            "font-weight": "bold",
+                                            "note": "当常量引用绑定不同类型时，会绑定一个临时量对象，编译器用来缓存表达式结果",
+                                            "layout_right_offset": {
+                                                "x": 4,
+                                                "y": -6
+                                            }
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgynabv7nsw0",
+                                            "created": 1641477714676,
+                                            "text": "指向常量的指针：不能改变对象的值，但可以允许一个指向常量的指针指向一个非常量的值",
+                                            "font-weight": "bold"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgyncparre80",
+                                            "created": 1641477900643,
+                                            "text": "常量指针：指针为常量类型，必须初始化，且不能改变；但指向的值如果不是常量可以改变",
+                                            "font-weight": "bold",
+                                            "priority": 3
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgyndudefb40",
+                                    "created": 1641477990050,
+                                    "text": "层级",
+                                    "priority": 2,
+                                    "expandState": "expand",
+                                    "note": "# 1\nint a(int &a, int &b){\n    return a + b;\n}\n// 底层\nint a(const int & a, const int & b){\n    return a + b;\n}\n\n# 2\nint a(int *a, int *b){\n    return *a + *b;\n}\n// 底层\nint a(const int *a, const int *b){\n    return *a + *b;\n}\n# 3 冲突\nint a(int a, int b){\n    return a + b;\n}\n// 高层 \nint a(const int a, const int b){\n    return a + b;\n}"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgyne0i0h280",
+                                            "created": 1641478003390,
+                                            "text": "顶层const：本身是一个常量",
+                                            "font-weight": "bold",
+                                            "note": "int i = 0;\n[const] int ci = 42;\nint *[const] pi = &i;\nconst int *[const] p3 = &ci;\n//指针 可以顶层也可以底层"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgyne10iwww0",
+                                            "created": 1641478004509,
+                                            "text": "底层const：指针所指向的对象是一个常量",
+                                            "font-weight": "bold",
+                                            "note": "[const] int *p2 = &ci;\n[const] int *const p3 = p2;\nconst int &b = a;\n//引用都是底层const"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgynif2e0ag0",
+                                            "created": 1641478348553,
+                                            "text": "规则: 拷入和拷出的对象必须具有相同的底层const，或者可以转化[非常量可以转为常量]",
+                                            "priority": 3,
+                                            "font-weight": "bold"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgynk5lghnk0",
+                            "created": 1641478484667,
+                            "text": "constexpr",
+                            "priority": 1,
+                            "font-weight": "bold",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgynlbcb4pc0",
+                                    "created": 1641478575539,
+                                    "text": "常量表达式：值不会改变，且在编译阶段就可以得到结果",
+                                    "font-weight": "bold",
+                                    "note": "1. 字面值\n2. 用常量表达式初始化的const对象"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgynlmzg1z40",
+                                    "created": 1641478600882,
+                                    "text": "[C11]: constexpr声明，编译阶段验证是否为表达式(常量)",
+                                    "priority": 5,
+                                    "font-weight": "bold",
+                                    "note": "1. nullptr\n2. 0\n3. 固定地址中的对象\n[如果声明中定义了一个指针，constexpr仅对指针有效，与所指的对象无关]\nint i = 1, j = 2;\nint main(){\n    constexpr int* function = &i;\n    // 可以\n    ++ i;\n    // 不行 且funciton变成右值了\n    //function = &j;\n    cout << i << endl;\n    return EXIT_SUCCESS;\n}"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgynrg1jdsw0",
+                                    "created": 1641479055956,
+                                    "text": "定义在函数体内的变量并不存放在固定地址中，不能用来初始化constexpr，而定义在函数体外的地址固定不变，可以用来初始化constexpr指针",
+                                    "priority": 5,
+                                    "font-weight": "bold"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "ciw1jnk2bbc0",
+                    "created": 1648525577949,
+                    "text": "STD",
+                    "priority": 1,
+                    "expandState": "expand",
+                    "font-weight": "bold"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "ciw1jsz4n7s0",
+                            "created": 1648525589744,
+                            "text": "string",
+                            "font-weight": "bold",
+                            "priority": 1,
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "chet1qjjsv40",
+                                    "created": 1643118927311,
+                                    "text": "定义和初始化",
+                                    "font-weight": "bold",
+                                    "note": "// 默认初始化空字符串\nstring s1;\n// 以s1初始化\nstring s2(s1);\nstring s3 = s1;\n// 以字面值初始化(除开空字符)\nstring s4 = \"value\";\nstring s5(\"value\");\n// 连续以n个字符x初始化\nstring s6(n, 'x');"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "chetby03g8g0",
+                                    "created": 1643119727191,
+                                    "text": "操作",
+                                    "font-weight": "bold",
+                                    "note": "string s = \"abs\";\n// 1. 实现operator<<\ncout << s << endl;\n// 2. 实现operator>>\ncin >> s;\n// 3. 获取一行数据\ngetline(cin, s);\n// 4. 是否为空\ns.empty();\n// 5. 字符个数\ns.size();\n// 6. 索引访问实现operator[]\ns[i];\n// 7. 赋值\ns1 = s2;\n// 8. 判断相等\ns1 == s2;\n// 9. 比较大小, 越少字符越小\ns1 > s2;\ns2 <= s2;\n// 10. 链接字符串opertor+\ns = s + \"a\" + \"c\";\n// **注意：以下为错误的**\n// ** 从左往右，每两个组合到第一个**\ns = \"a\" + \"c\" + s1;"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "ciw1k7ehyv40",
+                    "created": 1648525621149,
+                    "text": "类",
+                    "priority": 1,
+                    "font-weight": "bold"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cheqcrhoc280",
+                            "created": 1643111328051,
+                            "text": "struct",
+                            "priority": 4,
+                            "font-weight": "bold",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cheqf8g43fs0",
+                                    "created": 1643111521690,
+                                    "text": " "
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cheqcwx4kqg0",
+                            "created": 1643111339869,
+                            "text": "class",
+                            "priority": 4,
+                            "font-weight": "bold"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "right",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
