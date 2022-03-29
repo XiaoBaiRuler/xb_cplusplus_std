@@ -356,7 +356,8 @@
                     "created": 1648525524995,
                     "text": "关键字",
                     "font-weight": "bold",
-                    "priority": 1
+                    "priority": 1,
+                    "expandState": "collapse"
                 },
                 "children": [
                     {
@@ -365,59 +366,32 @@
                             "created": 1640836687980,
                             "text": "const",
                             "font-weight": "bold",
-                            "priority": 1,
-                            "expandState": "collapse"
+                            "priority": 2,
+                            "expandState": "collapse",
+                            "note": "1. 定义常量，必须初始化，且不能改变"
                         },
                         "children": [
-                            {
-                                "data": {
-                                    "id": "cgsc2j6857k0",
-                                    "created": 1640836711717,
-                                    "text": "定义常量，必须初始化，且不能改变",
-                                    "font-weight": "bold"
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "cgsc2w8nkxc0",
-                                    "created": 1640836740162,
-                                    "text": "作用",
-                                    "expandState": "expand"
-                                },
-                                "children": [
-                                    {
-                                        "data": {
-                                            "id": "cgsc5t63f9c0",
-                                            "created": 1640836968569,
-                                            "text": "1. 可以文件之间共享",
-                                            "font-weight": "bold",
-                                            "note": "// test.cc\nconst int a = 1000;\n// testa.cc\n#include \"test.cc\"\nextern const int a;"
-                                        },
-                                        "children": []
-                                    }
-                                ]
-                            },
                             {
                                 "data": {
                                     "id": "cgyn9oxc00g0",
                                     "created": 1641477664738,
                                     "text": "修饰复合类型",
-                                    "priority": 2,
-                                    "expandState": "expand"
+                                    "priority": 3,
+                                    "expandState": "collapse"
                                 },
                                 "children": [
                                     {
                                         "data": {
                                             "id": "cgyn62mbd6w0",
                                             "created": 1641477381090,
-                                            "text": "对常量的引用：不能修改；但是能够用任意表达式作为初始值",
+                                            "text": "对常量的引用：",
                                             "font-weight": "bold",
-                                            "note": "当常量引用绑定不同类型时，会绑定一个临时量对象，编译器用来缓存表达式结果",
+                                            "note": "- 不能修改；但是能够用任意表达式作为初始值\n-当常量引用绑定不同类型时，会绑定一个临时量对象，编译器用来缓存表达式结果",
                                             "layout_right_offset": {
                                                 "x": 4,
                                                 "y": -6
-                                            }
+                                            },
+                                            "priority": 4
                                         },
                                         "children": []
                                     },
@@ -425,8 +399,10 @@
                                         "data": {
                                             "id": "cgynabv7nsw0",
                                             "created": 1641477714676,
-                                            "text": "指向常量的指针：不能改变对象的值，但可以允许一个指向常量的指针指向一个非常量的值",
-                                            "font-weight": "bold"
+                                            "text": "指向常量的指针",
+                                            "font-weight": "bold",
+                                            "note": "不能改变对象的值，但可以允许一个指向常量的指针指向一个非常量的值",
+                                            "priority": 4
                                         },
                                         "children": []
                                     },
@@ -434,9 +410,10 @@
                                         "data": {
                                             "id": "cgyncparre80",
                                             "created": 1641477900643,
-                                            "text": "常量指针：指针为常量类型，必须初始化，且不能改变；但指向的值如果不是常量可以改变",
+                                            "text": "常量指针",
                                             "font-weight": "bold",
-                                            "priority": 3
+                                            "priority": 4,
+                                            "note": "- 指针为常量类型，必须初始化，且不能改变；但指向的值如果不是常量可以改变"
                                         },
                                         "children": []
                                     }
@@ -447,8 +424,8 @@
                                     "id": "cgyndudefb40",
                                     "created": 1641477990050,
                                     "text": "层级",
-                                    "priority": 2,
-                                    "expandState": "expand",
+                                    "priority": 3,
+                                    "expandState": "collapse",
                                     "note": "# 1\nint a(int &a, int &b){\n    return a + b;\n}\n// 底层\nint a(const int & a, const int & b){\n    return a + b;\n}\n\n# 2\nint a(int *a, int *b){\n    return *a + *b;\n}\n// 底层\nint a(const int *a, const int *b){\n    return *a + *b;\n}\n# 3 冲突\nint a(int a, int b){\n    return a + b;\n}\n// 高层 \nint a(const int a, const int b){\n    return a + b;\n}"
                                 },
                                 "children": [
@@ -458,7 +435,8 @@
                                             "created": 1641478003390,
                                             "text": "顶层const：本身是一个常量",
                                             "font-weight": "bold",
-                                            "note": "int i = 0;\n[const] int ci = 42;\nint *[const] pi = &i;\nconst int *[const] p3 = &ci;\n//指针 可以顶层也可以底层"
+                                            "note": "int i = 0;\n[const] int ci = 42;\nint *[const] pi = &i;\nconst int *[const] p3 = &ci;\n//指针 可以顶层也可以底层",
+                                            "priority": 4
                                         },
                                         "children": []
                                     },
@@ -468,7 +446,8 @@
                                             "created": 1641478004509,
                                             "text": "底层const：指针所指向的对象是一个常量",
                                             "font-weight": "bold",
-                                            "note": "[const] int *p2 = &ci;\n[const] int *const p3 = p2;\nconst int &b = a;\n//引用都是底层const"
+                                            "note": "[const] int *p2 = &ci;\n[const] int *const p3 = p2;\nconst int &b = a;\n//引用都是底层const",
+                                            "priority": 4
                                         },
                                         "children": []
                                     },
@@ -476,9 +455,10 @@
                                         "data": {
                                             "id": "cgynif2e0ag0",
                                             "created": 1641478348553,
-                                            "text": "规则: 拷入和拷出的对象必须具有相同的底层const，或者可以转化[非常量可以转为常量]",
-                                            "priority": 3,
-                                            "font-weight": "bold"
+                                            "text": "拷入拷出规则 ",
+                                            "priority": 4,
+                                            "font-weight": "bold",
+                                            "note": "- 拷入和拷出的对象必须具有相同的底层const，或者可以转化[非常量可以转为常量]"
                                         },
                                         "children": []
                                     }
@@ -491,39 +471,20 @@
                             "id": "cgynk5lghnk0",
                             "created": 1641478484667,
                             "text": "constexpr",
-                            "priority": 1,
+                            "priority": 2,
                             "font-weight": "bold",
-                            "expandState": "collapse"
+                            "expandState": "collapse",
+                            "note": "1. 常量表达式：值不会改变，且在编译阶段就可以得到结果\n- 字面值\n- 用常量表达式初始化的const对象"
                         },
                         "children": [
-                            {
-                                "data": {
-                                    "id": "cgynlbcb4pc0",
-                                    "created": 1641478575539,
-                                    "text": "常量表达式：值不会改变，且在编译阶段就可以得到结果",
-                                    "font-weight": "bold",
-                                    "note": "1. 字面值\n2. 用常量表达式初始化的const对象"
-                                },
-                                "children": []
-                            },
                             {
                                 "data": {
                                     "id": "cgynlmzg1z40",
                                     "created": 1641478600882,
                                     "text": "[C11]: constexpr声明，编译阶段验证是否为表达式(常量)",
-                                    "priority": 5,
+                                    "priority": 3,
                                     "font-weight": "bold",
-                                    "note": "1. nullptr\n2. 0\n3. 固定地址中的对象\n[如果声明中定义了一个指针，constexpr仅对指针有效，与所指的对象无关]\nint i = 1, j = 2;\nint main(){\n    constexpr int* function = &i;\n    // 可以\n    ++ i;\n    // 不行 且funciton变成右值了\n    //function = &j;\n    cout << i << endl;\n    return EXIT_SUCCESS;\n}"
-                                },
-                                "children": []
-                            },
-                            {
-                                "data": {
-                                    "id": "cgynrg1jdsw0",
-                                    "created": 1641479055956,
-                                    "text": "定义在函数体内的变量并不存放在固定地址中，不能用来初始化constexpr，而定义在函数体外的地址固定不变，可以用来初始化constexpr指针",
-                                    "priority": 5,
-                                    "font-weight": "bold"
+                                    "note": "1. nullptr\n2. 0\n3. 固定地址中的对象\n[如果声明中定义了一个指针，constexpr仅对指针有效，与所指的对象无关]\nint i = 1, j = 2;\nint main(){\n    constexpr int* function = &i;\n    // 可以\n    ++ i;\n    // 不行 且funciton变成右值了\n    //function = &j;\n    cout << i << endl;\n    return EXIT_SUCCESS;\n}\n**定义在函数体内的变量并不存放在固定地址中，不能用来初始化constexpr，而定义在函数体外的地址固定不变，可以用来初始化constexpr指针**"
                                 },
                                 "children": []
                             }
@@ -557,7 +518,8 @@
                                     "created": 1643118927311,
                                     "text": "定义和初始化",
                                     "font-weight": "bold",
-                                    "note": "// 默认初始化空字符串\nstring s1;\n// 以s1初始化\nstring s2(s1);\nstring s3 = s1;\n// 以字面值初始化(除开空字符)\nstring s4 = \"value\";\nstring s5(\"value\");\n// 连续以n个字符x初始化\nstring s6(n, 'x');"
+                                    "note": "// 默认初始化空字符串\nstring s1;\n// 以s1初始化\nstring s2(s1);\nstring s3 = s1;\n// 以字面值初始化(除开空字符)\nstring s4 = \"value\";\nstring s5(\"value\");\n// 连续以n个字符x初始化\nstring s6(n, 'x');",
+                                    "priority": 2
                                 },
                                 "children": []
                             },
@@ -567,7 +529,43 @@
                                     "created": 1643119727191,
                                     "text": "操作",
                                     "font-weight": "bold",
-                                    "note": "string s = \"abs\";\n// 1. 实现operator<<\ncout << s << endl;\n// 2. 实现operator>>\ncin >> s;\n// 3. 获取一行数据\ngetline(cin, s);\n// 4. 是否为空\ns.empty();\n// 5. 字符个数\ns.size();\n// 6. 索引访问实现operator[]\ns[i];\n// 7. 赋值\ns1 = s2;\n// 8. 判断相等\ns1 == s2;\n// 9. 比较大小, 越少字符越小\ns1 > s2;\ns2 <= s2;\n// 10. 链接字符串opertor+\ns = s + \"a\" + \"c\";\n// **注意：以下为错误的**\n// ** 从左往右，每两个组合到第一个**\ns = \"a\" + \"c\" + s1;"
+                                    "note": "string s = \"abs\";\n// 1. 实现operator<<\ncout << s << endl;\n// 2. 实现operator>>\ncin >> s;\n// 3. 获取一行数据\ngetline(cin, s);\n// 4. 是否为空\ns.empty();\n// 5. 字符个数\ns.size();\n// 6. 索引访问实现operator[]\ns[i];\n// 7. 赋值\ns1 = s2;\n// 8. 判断相等\ns1 == s2;\n// 9. 比较大小, 越少字符越小\ns1 > s2;\ns2 <= s2;\n// 10. 链接字符串opertor+\ns = s + \"a\" + \"c\";\n// **注意：以下为错误的**\n// ** 从左往右，每两个组合到第一个**\ns = \"a\" + \"c\" + s1;",
+                                    "priority": 2
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "ciw5fszxfq00",
+                            "created": 1648536560776,
+                            "text": "IO类型",
+                            "priority": 1,
+                            "font-weight": "bold",
+                            "expandState": "expand",
+                            "note": "## 流iostream\n\t- iostream/istream/ostream\n    - wiostream/wistream/wostream\n## 文件fstream\n\t- fstream/ifstream/ofstream\n    - wfstream/wifstream/wofstream\n## 字符串sstream\n\t- stringstream/istringstream/ostringstream\n    - wstringstream/wistringstream/wostringstream\n\n## 类型对象操作\n- **IO对象无拷贝或赋值**\n- "
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ciw6zy4bdlk0",
+                                    "created": 1648540960318,
+                                    "text": "fstream",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "- fstream f(\"sss.txt\");\n- fstream f(\"sss.txt\", xx_mode | xx_mode);\n\t- in 读\n    - out 写(默认截断)\n    - app 每次写头定位到文件末尾(没有app模式就行)\n    - ate 打开文件后立即定位到文件末尾\n    - trunc 截断文件(必须out模式)\n    - binary 以二进制方式打开\n- f.open(\"xxx.txt\");\n- f.open(\"xxx.txt\", xx_mode);\n- f.is_open();\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciw85wu4iy00",
+                                    "created": 1648544248820,
+                                    "text": "ssstream",
+                                    "priority": 2,
+                                    "font-weight": "bold",
+                                    "note": "- sstream ss(s);\n- ss.str(); 返回strm所保存的拷贝\n- void ss.str(s); 将s拷贝到strm中"
                                 },
                                 "children": []
                             }
@@ -581,7 +579,8 @@
                     "created": 1648525621149,
                     "text": "类",
                     "priority": 1,
-                    "font-weight": "bold"
+                    "font-weight": "bold",
+                    "expandState": "collapse"
                 },
                 "children": [
                     {
@@ -591,18 +590,9 @@
                             "text": "struct",
                             "priority": 4,
                             "font-weight": "bold",
-                            "expandState": "collapse"
+                            "expandState": "expand"
                         },
-                        "children": [
-                            {
-                                "data": {
-                                    "id": "cheqf8g43fs0",
-                                    "created": 1643111521690,
-                                    "text": " "
-                                },
-                                "children": []
-                            }
-                        ]
+                        "children": []
                     },
                     {
                         "data": {
