@@ -498,7 +498,7 @@
                     "created": 1648525577949,
                     "text": "STD",
                     "priority": 1,
-                    "expandState": "expand",
+                    "expandState": "collapse",
                     "font-weight": "bold"
                 },
                 "children": [
@@ -600,7 +600,8 @@
                             "text": "vector",
                             "priority": 1,
                             "font-weight": "bold",
-                            "note": "- .size() 元素个数\n- .max_size() 可保存的最大数目\n- .empty() 是否为空"
+                            "note": "- .size() 元素个数\n- .max_size() 可保存的最大数目\n- .empty() 是否为空\n- .resize() 设置初始空间\n- .shrink_to_fit() 去掉多余的空间",
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -610,7 +611,7 @@
                                     "text": "构造函数",
                                     "font-weight": "bold",
                                     "priority": 2,
-                                    "note": "1. 默认初始化 \n- vector<int> val1;\n2. 拷贝初始化\n- vector<int> val2(val1);\n3. 范围初始化\n- vector<int> val3(val1.begin(), val1.end());\n4. 列表初始化\n- vector<int> val4{1, 2, 3};\n- vector<int> val5 = {1, 2, 3};\n5. 初始化n个\n- vector<int> val2(n, 1);"
+                                    "note": "1. 默认初始化 \n- vector<int> val1;\n2. 拷贝初始化\n- vector<int> val2(val1);\n3. 范围初始化\n- vector<int> val3(val1.begin(), val1.end());\n4. 列表初始化\n- vector<int> val4{1, 2, 3};\n- vector<int> val5 = {1, 2, 3};\n5. 初始化n个\n- vector<int> val6(n, 1);"
                                 },
                                 "children": []
                             },
@@ -621,7 +622,7 @@
                                     "text": "赋值和交换",
                                     "font-weight": "bold",
                                     "priority": 2,
-                                    "note": "#### 1. 赋值\nvector<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换\na.push_back(1);\nb.push_back(3);\na.swap(b);\nswap(a, b);\n"
+                                    "note": "#### 1. 赋值(不限定元素个数一样)\nvector<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换(不限定元素个数一样)\na.push_back(1);\nb.push_back(3);\na.swap(b);\nswap(a, b);\n"
                                 },
                                 "children": []
                             },
@@ -629,10 +630,21 @@
                                 "data": {
                                     "id": "ciwgcawe5y00",
                                     "created": 1648567318497,
-                                    "text": "增删查改",
+                                    "text": "增删改",
                                     "font-weight": "bold",
                                     "priority": 2,
-                                    "note": "#### 1. 增\n1. push_back(args)\n- 在末尾添加args\n2. insert(iterator, args)\n- 在iterator后面添加args\n3. insert(iterator, 2, args);\n- 在iterator后面添加2个args\n4. emplace(iterator, 1);\n- 使用inits在iterator下构造一个元素\n"
+                                    "note": "#### 1. 增\n1. push_back(args)\n- 在末尾添加args\n2. insert(iterator, args)\n- 在iterator后面添加args\n3. insert(iterator, 2, args);\n- 在iterator后面添加2个args\n4. emplace(iterator, 1);\n- 使用inits在iterator下构造一个元素\n#### 2. 删\n1. erase(iterator); 删除当前元素\n2. clear(); 清空整个vector\n#### 3. 改\nvector<int> a = {1};\na[0] = 2;\n// 或者迭代器修改"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciww2prm6wg0",
+                                    "created": 1648611704976,
+                                    "text": "遍历",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 下标遍历\nint n = b.size();\nfor (int i = 0; i < n; ++ i){\n\tcout << b[i] << endl;\n}\n#### 2. iterator\n// const_iterator \n// cbegin(), cend()\n// iterator \n// begin(), end()\n#### 2. 倒序遍历\n// const_reverse_iterator\n// crbegin(), crend()\n// reverse_iterator\n// cbegin(), cend()\n#### 4. for遍历\nfor (int &i : b){\n}"
                                 },
                                 "children": []
                             }
@@ -644,9 +656,56 @@
                             "created": 1648565370045,
                             "text": "deque",
                             "font-weight": "bold",
-                            "priority": 1
+                            "priority": 1,
+                            "note": "- .max_size() 可保存的最大数目\n- .empty() 是否为空\n- .resize() 设置初始空间\n- .shrink_to_fit() 去掉多余的空间",
+                            "expandState": "collapse"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ciwfubyu5i80",
+                                    "created": 1648565910266,
+                                    "text": "构造函数",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "1. 默认初始化 \n- deque<int> val1;\n2. 拷贝初始化\n- deque<int> val2(val1);\n3. 范围初始化\n- deque<int> val3(val1.begin(), val1.end());\n4. 列表初始化\n- deque<int> val4{1, 2, 3};\n- vector<int> val5 = {1, 2, 3};\n5. 初始化n个\n- deque<int> val6(n, 1);"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwg4pidd280",
+                                    "created": 1648566723387,
+                                    "text": "赋值和交换",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 赋值(不限定元素个数一样)\ndeque<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换(不限定元素个数一样)\na.push_back(1);\nb.push_back(3);\na.swap(b);\nswap(a, b);\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwgcawe5y00",
+                                    "created": 1648567318497,
+                                    "text": "增删改",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 增\n1. push_back(args)\n- 在末尾添加args\n2. push_front(args)\n- 在前面插入args\n2. insert(iterator, args)\n- 在iterator后面添加args\n3. insert(iterator, 2, args);\n- 在iterator后面添加2个args\n4. emplace(iterator, 1);\n- 使用inits在iterator下构造一个元素\n5. emplace_front(args); \n6. emplace_back(args);\n#### 2. 删\n1. erase(iterator); 删除当前元素\n2. pop_back();\n3. pop_front();\n2. clear(); 清空整个deque\n#### 3. 改\ndeque<int> a = {1};\nint it& = a[0] = 2;\na.at(0) = 3;\na.front();\na.back();\n// 或者迭代器修改"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciww2prm6wg0",
+                                    "created": 1648611704976,
+                                    "text": "遍历",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 下标遍历\nint n = b.size();\nfor (int i = 0; i < n; ++ i){\n\tcout << b[i] << endl;\n}\n#### 2. iterator\n// const_iterator \n// cbegin(), cend()\n// iterator \n// begin(), end()\n#### 3. 倒序遍历\n// const_reverse_iterator\n// crbegin(), crend()\n// reverse_iterator\n// cbegin(), cend()\n#### 4. for遍历\nfor (int &i : b){\n}"
+                                },
+                                "children": []
+                            }
+                        ]
                     },
                     {
                         "data": {
@@ -654,9 +713,67 @@
                             "created": 1648565380736,
                             "text": "list",
                             "font-weight": "bold",
-                            "priority": 1
+                            "priority": 1,
+                            "note": "- empty();\n- size();\n- max_size();",
+                            "expandState": "collapse"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ciwfubyu5i80",
+                                    "created": 1648565910266,
+                                    "text": "构造函数",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "1. 默认初始化 \n- list<int> val1;\n2. 拷贝初始化\n- list<int> val2(val1);\n3. 范围初始化\n- list<int> val3(val1.begin(), val1.end());\n4. 列表初始化\n- list<int> val4{1, 2, 3};\n- list<int> val5 = {1, 2, 3};\n5. 初始化n个\n- list<int> val6(n, 1);"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwg4pidd280",
+                                    "created": 1648566723387,
+                                    "text": "赋值和交换",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 赋值(不限定元素个数一样)\nlist<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换(不限定元素个数一样)\na.push_back(1);\nb.push_back(3);\na.swap(b);\nswap(a, b);\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwgcawe5y00",
+                                    "created": 1648567318497,
+                                    "text": "增删改",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 增\n1. push_back(args)\n- 在末尾添加args\n2. push_front(args)\n- 在前面插入args\n2. insert(iterator, args)\n- 在iterator后面添加args\n3. insert(iterator, 2, args);\n- 在iterator后面添加2个args\n4. emplace(iterator, 1);\n- 使用inits在iterator下构造一个元素\n5. emplace_front(args); \n6. emplace_back(args);\n#### 2. 删\n1. erase(iterator); 删除当前元素\n2. pop_back();\n3. pop_front();\n2. clear(); 清空整个deque\n#### 3. 改\nlist<int> a = {1};\na.front();\na.back();\n// 或者迭代器修改"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciww2prm6wg0",
+                                    "created": 1648611704976,
+                                    "text": "遍历",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. iterator\n// const_iterator \n// cbegin(), cend()\n// iterator \n// begin(), end()\n#### 2. 倒序遍历\n// const_reverse_iterator\n// crbegin(), crend()\n// reverse_iterator\n// cbegin(), cend()\n#### 3. for遍历\nfor (int &i : b){\n}"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cix0rwbb4ds0",
+                                    "created": 1648624962771,
+                                    "text": "操作",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "1. splice\n2. remove()\n3. remove_if()\n4. unique()\n5. merge()\n6. sort()\n7. reverse()"
+                                },
+                                "children": []
+                            }
+                        ]
                     },
                     {
                         "data": {
@@ -664,9 +781,67 @@
                             "created": 1648565438789,
                             "text": "forward_list",
                             "font-weight": "bold",
-                            "priority": 1
+                            "priority": 1,
+                            "note": "- resize()\n- empty()\n- max_size()",
+                            "expandState": "collapse"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ciwfubyu5i80",
+                                    "created": 1648565910266,
+                                    "text": "构造函数",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "1. 默认初始化 \n- forward_list<int> val1;\n2. 拷贝初始化\n- forward_list<int> val2(val1);\n3. 范围初始化\n- forward_list<int> val3(val1.begin(), val1.end());\n4. 列表初始化\n- forward_list<int> val4{1, 2, 3};\n- forward_list<int> val5 = {1, 2, 3};\n5. 初始化n个\n- forward_list<int> val6(n, 1);"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwg4pidd280",
+                                    "created": 1648566723387,
+                                    "text": "赋值和交换",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 赋值(不限定元素个数一样)\nlist<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换(不限定元素个数一样)\na.swap(b);\nswap(a, b);\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwgcawe5y00",
+                                    "created": 1648567318497,
+                                    "text": "增删改",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 增\n1. push_front(args)\n- 在前面插入args\n2. insert_after(iterator, args)\n- 在iterator后面添加args\n3. emplace_after(iterator, 1);\n- 使用inits在iterator后构造一个元素\n4. emplace_front(args); \n#### 2. 删\n1. erase_after(it); 删除it后的元素\n2. pop_front(); 删除前面元素\n2. clear(); 清空整个deque\n#### 3. 改\nlist<int> a = {1};\na.front();\n// 或者迭代器修改"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciww2prm6wg0",
+                                    "created": 1648611704976,
+                                    "text": "遍历",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. iterator\n// const_iterator \n// cbegin(), cend()\n// cbefore_begin()\n\n// iterator \n// begin(), end()\n// before_begin()\n#### 2. for遍历\nfor (int &i : b){\n}"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cix0rwbb4ds0",
+                                    "created": 1648624962771,
+                                    "text": "操作",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "1. splice_after()\n2. remove()\n3. remove_if()\n4. unique()\n5. merge()\n6. sort()\n7. reverse()"
+                                },
+                                "children": []
+                            }
+                        ]
                     },
                     {
                         "data": {
@@ -674,9 +849,55 @@
                             "created": 1648565451717,
                             "text": "array",
                             "font-weight": "bold",
-                            "priority": 1
+                            "priority": 1,
+                            "note": "- size()\n- max_size()\n- empty()",
+                            "expandState": "collapse"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ciwfubyu5i80",
+                                    "created": 1648565910266,
+                                    "text": "初始化",
+                                    "priority": 2,
+                                    "note": "1. 默认初始化 \narray<int, 10> a;\n2. 列表初始化\narray<int, 10> b{0};\narray<int, 10> c = {0};\n3. 拷贝初始化\narray<int, 10> d(b);\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciwg4pidd280",
+                                    "created": 1648566723387,
+                                    "text": "赋值和交换",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. 赋值(限定元素个数一样)\nlist<int> a, b;\nb = {1, 2, 3};\na = b;\n\n#### 2. 交换(限定元素个数一样)\na.swap(b);\nswap(a, b);\n"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ciww2prm6wg0",
+                                    "created": 1648611704976,
+                                    "text": "遍历",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "#### 1. iterator\n// const_iterator \n// cbegin(), cend()\n\n// iterator \n// begin(), end()\n#### 2. reverse_iterator\n// const_reverse_iterator\n// crbegin(), crend()\n// reverse_iterator\n// rbegin(), rend()\n#### 3. for遍历\nfor (int &i : b){\n}\n#### 4. 下标遍历\nint n = b.size();\nfor (int i = 0; i < n; ++ i){\n\tcout << b[i] << endl;\n}"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cix0rwbb4ds0",
+                                    "created": 1648624962771,
+                                    "text": "操作",
+                                    "font-weight": "bold",
+                                    "priority": 2,
+                                    "note": "- fill()\n"
+                                },
+                                "children": []
+                            }
+                        ]
                     }
                 ]
             },
