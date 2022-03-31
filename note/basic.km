@@ -489,6 +489,16 @@
                                 "children": []
                             }
                         ]
+                    },
+                    {
+                        "data": {
+                            "id": "cixxksvfdig0",
+                            "created": 1648717503358,
+                            "text": "explicit",
+                            "font-weight": "bold",
+                            "priority": 2
+                        },
+                        "children": []
                     }
                 ]
             },
@@ -498,7 +508,7 @@
                     "created": 1648525577949,
                     "text": "STD",
                     "priority": 1,
-                    "expandState": "expand",
+                    "expandState": "collapse",
                     "font-weight": "bold",
                     "layout_right_offset": {
                         "x": 0,
@@ -985,7 +995,8 @@
                                 "x": -6,
                                 "y": -4
                             },
-                            "note": "#### 有序\n- set\n- map\n#### 无序\n- unordered_set\n- unordered_map\n#### 可重复关键字\n- multiset\n- multimap\n- unordered_multiset\n- unordered_multimap"
+                            "note": "#### 有序\n- set\n- map\n#### 无序\n- unordered_set\n- unordered_map\n#### 可重复关键字\n- multiset\n- multimap\n- unordered_multiset\n- unordered_multimap",
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -1080,6 +1091,83 @@
                     "note": "[capture list]\\(parameter list) -> return type {}\n\n#### 1. capture list\n- 可以捕获所在函数的变量\n- 在创建时拷贝的\n[val] 值，就只能读\n[&val] 引用，可以改变值\n[ptr] 指针，可以改变值\n**隐式捕获**\n- [=] 告诉编译器用值捕获\n- [&] 告诉编译器引用捕获\n\n#### 2. parameter list\n- 参数列表\n\n#### 3. return type\n- 默认void\n- 和函数一样，不能返回引用\n\n#### 4. {}"
                 },
                 "children": []
+            },
+            {
+                "data": {
+                    "id": "cixvc94xwls0",
+                    "created": 1648711191265,
+                    "text": "动态内存",
+                    "font-weight": "bold",
+                    "priority": 1
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cixvgqj7nko0",
+                            "created": 1648711542590,
+                            "text": "new/delete",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "- new 分配空间，并返回地址\nint \\*i = new int(0);\n// 动态数组非数组类型，不能begin().\n// 当初始化器数目大于元素数目，则new表达式失败，不分配内存，bad_array_new_length\nint \\*a = new int[20];\nconst int \\*b = new const int(1); \n- delete 释放该空间\ndelete i;\n- delete[] 释放数组类\ndelete [] a;\n\n- eg: 当内存分配光时，\n\t无法分配会抛出bad_alloc异常\n\n//nothrow一旦分配失败，返回nullptr\nint \\*p2 = new (nothrow) int;\n"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cixy6xqu0ts0",
+                            "created": 1648719237976,
+                            "text": "allocator",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "1. 初始化\n- allocator<T> a;\n\n2. 分配\n- 分配n个未初始化T类型对象\na.allocate(n);\n- args构造p指向内存的对象\na.construct(p, args);\n\n3. 释放\n- 释放p指向的内存下的n个T对象\n- p为T*指针\na.deallocate(p, n);\n- 对p指向的对象执行析构函数\na.destory(p);"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cixvn9quo000",
+                            "created": 1648712054595,
+                            "text": "shared_ptr",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "#### 1. 初始化\n\n- 默认\nshared_ptr<int> p1;\n\n- make_shared 初始化\nshared_ptr<int> p2 = make_shared<int>(6);\n// 其他类型()拥有类似emplace的操作\n\n- 使用new 必须直接初始化才行\nshared_ptr<int> p3(new int(16));\nshared_ptr<int> p4(p3);\nshared_ptr<int> p5(u);\n\n- q内置指针(接管控制权) \n- d代替delete的可调用对象\nshared_ptr<int> p6(q, d);\n\n#### 2. 操作\n- .get() 获取指针\n- .swap(q) 交换指针\n\n#### 3. 特殊操作\n\n- p.unique() p.use_count() == 1?\n- p.use_count() 返回共享对象的智能指针数量(很慢)\n- p = q; 赋值(同类型)\n\n#### 4. 释放\n\n// 当p唯一指向对象时，就释放对象\n- p.reset() = nullptr\n- p.reset(q) = q\n- p.reset(q, d) = q"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cixx3k848iw0",
+                            "created": 1648716152344,
+                            "text": "unique_ptr",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "#### 1. 初始化\n\n- 默认\nunique_ptr<int> p1;\n- 只支持new，不支持拷贝，赋值\nunique_ptr<int> p2(new int(1));\n- 设置销毁器\nunique_ptr<T, D> u;\nunique_ptr<T, D> u(d);\n\n#### 2. 操作\n\n- .get() 获取指针\n- .swap(q) 交换指针\n\n#### 3. 销毁\n\n- u = nullptr;\n- u.release(); => nullptr\n- u.reset();\n- u.reset(nullptr);\n- u.reset(q);\n\n"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cixxww3gjjk0",
+                            "created": 1648718450744,
+                            "text": "weak_ptr",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "1. **不控制所指向对象生存期的智能指针**\n2. **绑定shared_ptr不会影响其引用计数**\n#### 1. 初始化\n\n- weak_ptr<T> w;\n- weak_ptr<T> w(sp);\n// 赋值\n- w = p;\n\n#### 2. 销毁\n\n- w.reset()\n- w.use_count() 与w共享对象的shared_ptr的数量\n- w.expired() 若w.use_count() == 0\n- w.lock() if w.expired() 返回空的shared_ptr, 否则返回一个指向w的对象的shared_ptr"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cixxqeq24io0",
+                            "created": 1648717942744,
+                            "text": "注意事项",
+                            "priority": 1,
+                            "font-weight": "bold",
+                            "note": "1. 不能使用相同的内置指针值初始化(或reset)多个智能指针\n2. 不delete get() 返回的指针\n3. 不适用get()初始化或reset另一个智能指针\n4. 当使用get()获取指针，牢记当最后一个对应的智能指针销毁后，指针失效\n5. 如果使用智能指针管理的资源不是new分配的内存，必须传递一个删除器"
+                        },
+                        "children": []
+                    }
+                ]
             }
         ]
     },
