@@ -354,7 +354,7 @@
                 "data": {
                     "id": "ciw1iz8al880",
                     "created": 1648525524995,
-                    "text": "类",
+                    "text": "关键字",
                     "font-weight": "bold",
                     "priority": 1,
                     "expandState": "collapse"
@@ -508,6 +508,17 @@
                             "text": "friend",
                             "font-weight": "bold",
                             "priority": 2
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cizmcw0lbfk0",
+                            "created": 1648888970992,
+                            "text": "noexcept",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "- 通知标准库当前构造函数不抛出异常\n"
                         },
                         "children": []
                     }
@@ -1066,7 +1077,7 @@
                     "text": "类",
                     "priority": 1,
                     "font-weight": "bold",
-                    "expandState": "collapse",
+                    "expandState": "expand",
                     "note": "## 1. struct\n\n## 2. class"
                 },
                 "children": [
@@ -1077,7 +1088,8 @@
                             "text": "拷贝构造函数",
                             "font-weight": "bold",
                             "priority": 2,
-                            "note": "### 1. 拷贝构造函数\n\n- 第一个参数是自身类型的引用，其他任何参数都要右默认值\n```c++\nclass t(){\npublic:\n\tt();\n   \tt(const t&);\nprivate:\n\tint val;\n};\nt::t(const t& t1){\n\tval = t1.val;\n}\n```\n\n### 2. 合成拷贝构造函数\n\n- 如果没有定义，编译器也会合成一个拷贝构造函数\n- 编译器从给定对象中依次将每个非static成员拷贝到正在创建对象中\n- 内置类型，直接拷贝；而数组也会逐个元素拷贝\n- 显式要求=default;\n- 隐式为inline的\n\n#### 3. 拷贝赋值运算符\n\n- 重载运算符\n```c++\nclass a{\npublic:\n\ta& operator=(const a& rhs);\nprivate:\n\tint val;\n};\na& a::operator=(const a& rhs){\n\tval = rhs.val;\n    return *this;\n}\n```\n\n#### 4. 合成拷贝赋值运算符\n\n- 编译器从给定对象中依次将每个非static成员拷贝到正在创建对象中\n- 返回一个指向左侧运算对象的引用\n"
+                            "note": "### 1. 拷贝构造函数\n\n- 第一个参数是自身类型的引用，其他任何参数都要右默认值\n```c++\nclass t(){\npublic:\n\tt();\n   \tt(const t&);\nprivate:\n\tint val;\n};\nt::t(const t& t1){\n\tval = t1.val;\n}\n```\n\n### 2. 合成拷贝构造函数\n\n- 如果没有定义，编译器也会合成一个拷贝构造函数\n- 编译器从给定对象中依次将每个非static成员拷贝到正在创建对象中\n- 内置类型，直接拷贝；而数组也会逐个元素拷贝\n- 显式要求=default;\n- 隐式为inline的\n\n#### 3. 拷贝赋值运算符\n\n- 重载运算符\n```c++\nclass a{\npublic:\n\ta& operator=(const a& rhs);\nprivate:\n\tint val;\n};\na& a::operator=(const a& rhs){\n\tval = rhs.val;\n    return *this;\n}\n```\n\n#### 4. 合成拷贝赋值运算符\n\n- 编译器从给定对象中依次将每个非static成员拷贝到正在创建对象中\n- 返回一个指向左侧运算对象的引用\n\n### 5. 注意事项\n\n- 如果没有移动构造函数，右值也会被拷贝\n",
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -1111,7 +1123,8 @@
                             "text": "析构函数",
                             "font-weight": "bold",
                             "priority": 2,
-                            "note": "#### 1. 概念\n\t\n- 唯一的，无参数的，无返回值的\n- 先执行函数体，然后销毁成员(按初始化顺序的逆序销毁)\n- **隐式销毁一个内置指针类型的成员不会删除它指向的对象；但是智能指针成员在析构阶段会被自动销毁**\n- 当指向一个对象的引用或指针离开作用域时，析构函数不会执行\n\n#### 2. 析构函数\n\n```c++\nclass b{\npublic:\n\t~b(){\n    \tdelete a;\n   }\nprivate:\n\tint *a = new int(6);\n};\n```\n\n#### 3. 合成析构函数\n\n- 如果没有定义析构函数，编译器会定义一个合成析构函数\n- 显式要求=default;\n- 隐式为inline的\n- **析构函数自身并不直接销毁成员，在整个对象销毁过程中，析构函数体是作为成员销毁步骤之外的另一部分而进行的**\n\n"
+                            "note": "#### 1. 概念\n\t\n- 唯一的，无参数的，无返回值的\n- 先执行函数体，然后销毁成员(按初始化顺序的逆序销毁)\n- **隐式销毁一个内置指针类型的成员不会删除它指向的对象；但是智能指针成员在析构阶段会被自动销毁**\n- 当指向一个对象的引用或指针离开作用域时，析构函数不会执行\n\n#### 2. 析构函数\n\n```c++\nclass b{\npublic:\n\t~b(){\n    \tdelete a;\n   }\nprivate:\n\tint *a = new int(6);\n};\n```\n\n#### 3. 合成析构函数\n\n- 如果没有定义析构函数，编译器会定义一个合成析构函数\n- 显式要求=default;\n- 隐式为inline的\n- **析构函数自身并不直接销毁成员，在整个对象销毁过程中，析构函数体是作为成员销毁步骤之外的另一部分而进行的**\n\n",
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -1126,6 +1139,17 @@
                                 "children": []
                             }
                         ]
+                    },
+                    {
+                        "data": {
+                            "id": "cizm8mvnyog0",
+                            "created": 1648888637646,
+                            "text": "移动构造函数",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "### 1. 移动构造函数\n\n- 第一个参数是自身类型的引用(右值)，其他任何参数都要右默认值\n```c++\nclass c{\npublic:\n\tc(c&&) noexcept;\nprivate:\n\tint val;\n}\nc::c(c&& a) : val(a.val) noexcept \n{}\n```\n\n#### 2. 移动赋值运算符\n\n```c++\nclass c{\npublic:\n\tc& operator(c&&rhs) noexcept;\nprivate:\n\tint val;\n}\nc& c::operator(c&&rhs) noexcept\n{\t\n\t// 检测自赋值\n\tif (this != &rhs){\n    \t// 释放已有元素\n        free();\n        // 接管资源\n        val = rhs.val;\n        // 置于可析构状态\n        xxx = nullptr;\n    }\n    return *this;\n}\n```\n\n#### 3. 合成的移动操作\n\n1. 如果一个类定义了自己的拷贝构造函数，拷贝赋值运算符或者析构函数，编译器就不会为它合成移动构造函数和移动赋值运算符\n\n2. 只有当一个类没有任何自己版本的拷贝控制成员，且类的每个非static数据成员都可以移动，编译器才会为它合成移动构造函数或移动赋值运算符\n\n3. 可以使用=default显式删除\n\n4. 和合成的拷贝构造函数和拷贝赋值运算符是互斥存在的\n"
+                        },
+                        "children": []
                     }
                 ]
             },
@@ -1224,9 +1248,22 @@
                     "created": 1648887443400,
                     "text": "右值引用",
                     "font-weight": "bold",
-                    "priority": 1
+                    "priority": 1,
+                    "note": "#### 1. 右值\n\n1. 绑定到右值的引用&&(只能绑定到一个将要销毁的对象)\n2. 与左值引用相比，右值引用可以绑定到表达式中，但不能将一个右值引用直接绑定到一个左值上\n× int &&j = i;\n√ int &&j = i * 42;\n3. 可以将一个const的引用绑定到一个右值上\nconst int &i = i * 42;\n3. 左值持久，右值短暂\n- 右值可以字面常量，表达式求值过程中创建的临时对象\n- 变量是左值，因此不能将一个右值引用直接绑定到一个变量上，即使这个变量是右值引用类型也不行\n\n"
                 },
-                "children": []
+                "children": [
+                    {
+                        "data": {
+                            "id": "cizm4lwf0yg0",
+                            "created": 1648888322058,
+                            "text": "std::move()",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "1. 调用这个函数，可以获得绑定在左值上的右值引用\n=> 对于调用的左值，除了赋值和销毁外，不能再使用它了。"
+                        },
+                        "children": []
+                    }
+                ]
             }
         ]
     },
