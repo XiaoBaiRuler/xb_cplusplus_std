@@ -8,3 +8,4 @@
 6. 智能指针的引用计数的变化推断?
 7. shared_ptr是为了方便内存的管理，那么unique_ptr和weak_ptr的具体用途是什么？为什么这样设计呢？
 8. allocator 也是为什么设计的？有什么用？
+9. shared_ptr 怎样实现？

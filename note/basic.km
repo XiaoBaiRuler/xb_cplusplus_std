@@ -354,7 +354,7 @@
                 "data": {
                     "id": "ciw1iz8al880",
                     "created": 1648525524995,
-                    "text": "关键字",
+                    "text": "类",
                     "font-weight": "bold",
                     "priority": 1,
                     "expandState": "collapse"
@@ -495,6 +495,17 @@
                             "id": "cixxksvfdig0",
                             "created": 1648717503358,
                             "text": "explicit",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "- 阻止隐式使用，eg：explict构造函数中，必须显式调用"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cizlrig4dco0",
+                            "created": 1648887295809,
+                            "text": "friend",
                             "font-weight": "bold",
                             "priority": 2
                         },
@@ -1055,29 +1066,66 @@
                     "text": "类",
                     "priority": 1,
                     "font-weight": "bold",
-                    "expandState": "collapse"
+                    "expandState": "collapse",
+                    "note": "## 1. struct\n\n## 2. class"
                 },
                 "children": [
                     {
                         "data": {
-                            "id": "cheqcrhoc280",
-                            "created": 1643111328051,
-                            "text": "struct",
-                            "priority": 4,
+                            "id": "cizeux0qx1k0",
+                            "created": 1648867814854,
+                            "text": "拷贝构造函数",
                             "font-weight": "bold",
-                            "expandState": "expand"
+                            "priority": 2,
+                            "note": "### 1. 拷贝构造函数\n\n- 第一个参数是自身类型的引用，其他任何参数都要右默认值\n```c++\nclass t(){\npublic:\n\tt();\n   \tt(const t&);\nprivate:\n\tint val;\n};\nt::t(const t& t1){\n\tval = t1.val;\n}\n```\n\n### 2. 合成拷贝构造函数\n\n- 如果没有定义，编译器也会合成一个拷贝构造函数\n- 编译器从给定对象中依次将每个非static成员拷贝到正在创建对象中\n- 内置类型，直接拷贝；而数组也会逐个元素拷贝\n- 显式要求=default;\n- 隐式为inline的\n\n#### 3. 拷贝赋值运算符\n\n- 重载运算符\n```c++\nclass a{\npublic:\n\ta& operator=(const a& rhs);\nprivate:\n\tint val;\n};\na& a::operator=(const a& rhs){\n\tval = rhs.val;\n    return *this;\n}\n```\n\n#### 4. 合成拷贝赋值运算符\n\n- 编译器从给定对象中依次将每个非static成员拷贝到正在创建对象中\n- 返回一个指向左侧运算对象的引用\n"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cizf92k2p3c0",
+                                    "created": 1648868924005,
+                                    "text": "直接/拷贝初始化",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "#### 1. 直接初始化\n\n- 选择最匹配的构造函数初始化\n\n#### 2. 拷贝初始化\n\n- 将右侧运算对象拷贝到正在创建的对象中(可以进行类型转换)\n\n\n- "
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cizke8exq800",
+                                    "created": 1648883434125,
+                                    "text": "阻止拷贝",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "xxx(const xxx&) = delete;\nxxx& operator=(const xxx&) = delete;\n\n- private声明函数阻止拷贝，但是友元和成员函数还是可以进行拷贝(不能ding'yi)"
+                                },
+                                "children": []
+                            }
+                        ]
                     },
                     {
                         "data": {
-                            "id": "cheqcwx4kqg0",
-                            "created": 1643111339869,
-                            "text": "class",
-                            "priority": 4,
-                            "font-weight": "bold"
+                            "id": "cizj048ccrc0",
+                            "created": 1648879506811,
+                            "text": "析构函数",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "#### 1. 概念\n\t\n- 唯一的，无参数的，无返回值的\n- 先执行函数体，然后销毁成员(按初始化顺序的逆序销毁)\n- **隐式销毁一个内置指针类型的成员不会删除它指向的对象；但是智能指针成员在析构阶段会被自动销毁**\n- 当指向一个对象的引用或指针离开作用域时，析构函数不会执行\n\n#### 2. 析构函数\n\n```c++\nclass b{\npublic:\n\t~b(){\n    \tdelete a;\n   }\nprivate:\n\tint *a = new int(6);\n};\n```\n\n#### 3. 合成析构函数\n\n- 如果没有定义析构函数，编译器会定义一个合成析构函数\n- 显式要求=default;\n- 隐式为inline的\n- **析构函数自身并不直接销毁成员，在整个对象销毁过程中，析构函数体是作为成员销毁步骤之外的另一部分而进行的**\n\n"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cizkflxkd8o0",
+                                    "created": 1648883541914,
+                                    "text": "阻止析构",
+                                    "priority": 3,
+                                    "font-weight": "bold",
+                                    "note": "~xxx() = delete;\n\n- 编译器将不允许定义该类型的变量或创建该类型的临时对象\n- 可以动态分配这种类型的对象，但是不能释放这些对象\n- private声明函数阻止析构，但是友元和成员函数还是可以进行析构(不能定义)"
+                                },
+                                "children": []
+                            }
+                        ]
                     }
                 ]
             },
@@ -1098,7 +1146,8 @@
                     "created": 1648711191265,
                     "text": "动态内存",
                     "font-weight": "bold",
-                    "priority": 1
+                    "priority": 1,
+                    "expandState": "collapse"
                 },
                 "children": [
                     {
@@ -1168,6 +1217,16 @@
                         "children": []
                     }
                 ]
+            },
+            {
+                "data": {
+                    "id": "cizlte90r0w0",
+                    "created": 1648887443400,
+                    "text": "右值引用",
+                    "font-weight": "bold",
+                    "priority": 1
+                },
+                "children": []
             }
         ]
     },
