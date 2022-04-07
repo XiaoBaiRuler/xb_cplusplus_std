@@ -1077,7 +1077,7 @@
                     "text": "类",
                     "priority": 1,
                     "font-weight": "bold",
-                    "expandState": "expand",
+                    "expandState": "collapse",
                     "note": "## 1. struct\n\n## 2. class"
                 },
                 "children": [
@@ -1147,7 +1147,8 @@
                             "text": "移动构造函数",
                             "font-weight": "bold",
                             "priority": 2,
-                            "note": "### 1. 移动构造函数\n\n- 第一个参数是自身类型的引用(右值)，其他任何参数都要右默认值\n```c++\nclass c{\npublic:\n\tc(c&&) noexcept;\nprivate:\n\tint val;\n}\nc::c(c&& a) : val(a.val) noexcept \n{}\n```\n\n#### 2. 移动赋值运算符\n\n```c++\nclass c{\npublic:\n\tc& operator(c&&rhs) noexcept;\nprivate:\n\tint val;\n}\nc& c::operator(c&&rhs) noexcept\n{\t\n\t// 检测自赋值\n\tif (this != &rhs){\n    \t// 释放已有元素\n        free();\n        // 接管资源\n        val = rhs.val;\n        // 置于可析构状态\n        xxx = nullptr;\n    }\n    return *this;\n}\n```\n\n#### 3. 合成的移动操作\n\n1. 如果一个类定义了自己的拷贝构造函数，拷贝赋值运算符或者析构函数，编译器就不会为它合成移动构造函数和移动赋值运算符\n\n2. 只有当一个类没有任何自己版本的拷贝控制成员，且类的每个非static数据成员都可以移动，编译器才会为它合成移动构造函数或移动赋值运算符\n\n3. 可以使用=default显式删除\n\n4. 和合成的拷贝构造函数和拷贝赋值运算符是互斥存在的\n\n#### 4. 移动迭代器\n\nvector<int> a = {1, 2};\nvector<int> b(\nmake_move_iterator(a.begin()),\nmake_move_iterator(a.begin()));\n"
+                            "note": "### 1. 移动构造函数\n\n- 第一个参数是自身类型的引用(右值)，其他任何参数都要右默认值\n```c++\nclass c{\npublic:\n\tc(c&&) noexcept;\nprivate:\n\tint val;\n}\nc::c(c&& a) : val(a.val) noexcept \n{}\n```\n\n#### 2. 移动赋值运算符\n\n```c++\nclass c{\npublic:\n\tc& operator(c&&rhs) noexcept;\nprivate:\n\tint val;\n}\nc& c::operator(c&&rhs) noexcept\n{\t\n\t// 检测自赋值\n\tif (this != &rhs){\n    \t// 释放已有元素\n        free();\n        // 接管资源\n        val = rhs.val;\n        // 置于可析构状态\n        xxx = nullptr;\n    }\n    return *this;\n}\n```\n\n#### 3. 合成的移动操作\n\n1. 如果一个类定义了自己的拷贝构造函数，拷贝赋值运算符或者析构函数，编译器就不会为它合成移动构造函数和移动赋值运算符\n\n2. 只有当一个类没有任何自己版本的拷贝控制成员，且类的每个非static数据成员都可以移动，编译器才会为它合成移动构造函数或移动赋值运算符\n\n3. 可以使用=default显式删除\n\n4. 和合成的拷贝构造函数和拷贝赋值运算符是互斥存在的\n\n#### 4. 移动迭代器\n\nvector<int> a = {1, 2};\nvector<int> b(\nmake_move_iterator(a.begin()),\nmake_move_iterator(a.begin()));\n",
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -1170,7 +1171,8 @@
                             "text": "函数重载",
                             "font-weight": "bold",
                             "priority": 2,
-                            "note": "**1. 除开:: .\\* . ? : 等符号不能重载外，其他大部分都可以**\n\n**2. 注意成员函数，非成员函数**\n\n- = [] () -> 必须是成员\n- 复合赋值，一般是成员\n- 改变成员自身的，递增，递减，解引用等，通常是成员\n- 算术、相等性、关系、位运算等非成员(对称性)"
+                            "note": "**1. 除开:: .\\* . ? : 等符号不能重载外，其他大部分都可以**\n\n**2. 注意成员函数，非成员函数**\n\n- = [] () -> 必须是成员\n- 复合赋值，一般是成员\n- 改变成员自身的，递增，递减，解引用等，通常是成员\n- 算术、相等性、关系、位运算等非成员(对称性)",
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -1205,7 +1207,8 @@
                     "text": "lambda",
                     "font-weight": "bold",
                     "priority": 1,
-                    "note": "[capture list]\\(parameter list) -> return type {}\n\n#### 1. capture list\n- 可以捕获所在函数的变量\n- 在创建时拷贝的\n[val] 值，就只能读\n[&val] 引用，可以改变值\n[ptr] 指针，可以改变值\n**隐式捕获**\n- [=] 告诉编译器用值捕获\n- [&] 告诉编译器引用捕获\n\n#### 2. parameter list\n- 参数列表\n\n#### 3. return type\n- 默认void\n- 和函数一样，不能返回引用\n\n#### 4. {}"
+                    "note": "[capture list]\\(parameter list) -> return type {}\n\n#### 1. capture list\n- 可以捕获所在函数的变量\n- 在创建时拷贝的\n[val] 值，就只能读\n[&val] 引用，可以改变值\n[ptr] 指针，可以改变值\n**隐式捕获**\n- [=] 告诉编译器用值捕获\n- [&] 告诉编译器引用捕获\n\n#### 2. parameter list\n- 参数列表\n\n#### 3. return type\n- 默认void\n- 和函数一样，不能返回引用\n\n#### 4. {}",
+                    "expandState": "collapse"
                 },
                 "children": [
                     {
@@ -1306,7 +1309,8 @@
                     "text": "右值引用",
                     "font-weight": "bold",
                     "priority": 1,
-                    "note": "#### 1. 右值\n\n1. 绑定到右值的引用&&(只能绑定到一个将要销毁的对象)\n2. 与左值引用相比，右值引用可以绑定到表达式中，但不能将一个右值引用直接绑定到一个左值上\n× int &&j = i;\n√ int &&j = i * 42;\n3. 可以将一个const的引用绑定到一个右值上\nconst int &i = i * 42;\n3. 左值持久，右值短暂\n- 右值可以字面常量，表达式求值过程中创建的临时对象\n- 变量是左值，因此不能将一个右值引用直接绑定到一个变量上，即使这个变量是右值引用类型也不行\n\n"
+                    "note": "#### 1. 右值\n\n1. 绑定到右值的引用&&(只能绑定到一个将要销毁的对象)\n2. 与左值引用相比，右值引用可以绑定到表达式中，但不能将一个右值引用直接绑定到一个左值上\n× int &&j = i;\n√ int &&j = i * 42;\n3. 可以将一个const的引用绑定到一个右值上\nconst int &i = i * 42;\n3. 左值持久，右值短暂\n- 右值可以字面常量，表达式求值过程中创建的临时对象\n- 变量是左值，因此不能将一个右值引用直接绑定到一个变量上，即使这个变量是右值引用类型也不行\n\n",
+                    "expandState": "collapse"
                 },
                 "children": [
                     {
@@ -1317,6 +1321,107 @@
                             "font-weight": "bold",
                             "priority": 2,
                             "note": "1. 调用这个函数，可以获得绑定在左值上的右值引用\n=> 对于调用的左值，除了赋值和销毁外，不能再使用它了。"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cj3snih51fs0",
+                    "created": 1649312970010,
+                    "text": "面向对象",
+                    "font-weight": "bold",
+                    "priority": 1
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cj3snpb2lvc0",
+                            "created": 1649312984880,
+                            "text": "继承",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "// 基类 可以继承多个类\n```c++\nclass Quote{\npublic:\n\tstd::string isbn() const;\n}\n```\n\n// 派生类\n```c++\n// 声明，不需要包含派生列表\nclass Bluk_quote;\nclass Bluk_quote : Quote{\npublic:\n\tdouble price;\n}\n```\n\n// 不存在基类到派生类的转换\n// dynamic_cast\n\n// 如果一个派生类虚函数需要调用基类的版本，可以使用域运算符来限定\nxx -> Quote::net(42);",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cj3wkgrd2800",
+                                    "created": 1649324015621,
+                                    "text": "访问和控制",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "1. private\n\n- 派生类不能访问\n- \n\n2. public\n\n- 修饰成员\n\t- 派生类可以访问\n- 修饰类\n\t- 基类的公有成员也是派生类接口的组成bu'fen\n3. protected\n\n- 派生类可以访问，友元也可以访问\n- 其他用户不能访问\n\n// 对于派生类的成员(友元)能否访问其直接基类的成员没有什么影响"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cj3ws5zch680",
+                                    "created": 1649324619073,
+                                    "text": "静态成员",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "- 在整个继承体系中只存在唯一定义"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cj3wwl2rgog0",
+                                    "created": 1649324965388,
+                                    "text": "阻止继承",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "- 在类名后 + final(C++11), 就不能作为基类了\nclass NoDerived final{}"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cj3x71ktngg0",
+                                    "created": 1649325784950,
+                                    "text": "友元",
+                                    "font-weight": "bold",
+                                    "priority": 3
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cj3snxdl5rk0",
+                            "created": 1649313002447,
+                            "text": "虚函数",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "// 基类 virtual\n```c++\nclass Quote{\npublic:\n\tstd::string isbn() const;\n\tvirual double net(size_t n) const;\n}\n```\n\n// 派生类 override\n```c++\nclass Bluk_quote : Quote{\npublic:\n\tdouble price;\n    // 显式注明成员函数改写基类的虚函数\n\tdouble net(size_t n) const override;\n}\n```"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cj3x2f1y1m80",
+                                    "created": 1649325422463,
+                                    "text": "纯虚函数",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "// 当前函数没有任何意义\nint xxx() = 0;\n// 含有纯虚函数的类时抽象基类，不能直接创建一个抽象基类对象"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cj3spbrccv40",
+                            "created": 1649313112117,
+                            "text": "动态绑定",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "// 当使用基类型的引用或指针调用一个虚函数时，将发生动态绑定 -> 决定调用那个函数"
                         },
                         "children": []
                     }
