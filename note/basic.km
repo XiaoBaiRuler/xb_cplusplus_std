@@ -1147,9 +1147,54 @@
                             "text": "移动构造函数",
                             "font-weight": "bold",
                             "priority": 2,
-                            "note": "### 1. 移动构造函数\n\n- 第一个参数是自身类型的引用(右值)，其他任何参数都要右默认值\n```c++\nclass c{\npublic:\n\tc(c&&) noexcept;\nprivate:\n\tint val;\n}\nc::c(c&& a) : val(a.val) noexcept \n{}\n```\n\n#### 2. 移动赋值运算符\n\n```c++\nclass c{\npublic:\n\tc& operator(c&&rhs) noexcept;\nprivate:\n\tint val;\n}\nc& c::operator(c&&rhs) noexcept\n{\t\n\t// 检测自赋值\n\tif (this != &rhs){\n    \t// 释放已有元素\n        free();\n        // 接管资源\n        val = rhs.val;\n        // 置于可析构状态\n        xxx = nullptr;\n    }\n    return *this;\n}\n```\n\n#### 3. 合成的移动操作\n\n1. 如果一个类定义了自己的拷贝构造函数，拷贝赋值运算符或者析构函数，编译器就不会为它合成移动构造函数和移动赋值运算符\n\n2. 只有当一个类没有任何自己版本的拷贝控制成员，且类的每个非static数据成员都可以移动，编译器才会为它合成移动构造函数或移动赋值运算符\n\n3. 可以使用=default显式删除\n\n4. 和合成的拷贝构造函数和拷贝赋值运算符是互斥存在的\n"
+                            "note": "### 1. 移动构造函数\n\n- 第一个参数是自身类型的引用(右值)，其他任何参数都要右默认值\n```c++\nclass c{\npublic:\n\tc(c&&) noexcept;\nprivate:\n\tint val;\n}\nc::c(c&& a) : val(a.val) noexcept \n{}\n```\n\n#### 2. 移动赋值运算符\n\n```c++\nclass c{\npublic:\n\tc& operator(c&&rhs) noexcept;\nprivate:\n\tint val;\n}\nc& c::operator(c&&rhs) noexcept\n{\t\n\t// 检测自赋值\n\tif (this != &rhs){\n    \t// 释放已有元素\n        free();\n        // 接管资源\n        val = rhs.val;\n        // 置于可析构状态\n        xxx = nullptr;\n    }\n    return *this;\n}\n```\n\n#### 3. 合成的移动操作\n\n1. 如果一个类定义了自己的拷贝构造函数，拷贝赋值运算符或者析构函数，编译器就不会为它合成移动构造函数和移动赋值运算符\n\n2. 只有当一个类没有任何自己版本的拷贝控制成员，且类的每个非static数据成员都可以移动，编译器才会为它合成移动构造函数或移动赋值运算符\n\n3. 可以使用=default显式删除\n\n4. 和合成的拷贝构造函数和拷贝赋值运算符是互斥存在的\n\n#### 4. 移动迭代器\n\nvector<int> a = {1, 2};\nvector<int> b(\nmake_move_iterator(a.begin()),\nmake_move_iterator(a.begin()));\n"
                         },
-                        "children": []
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cj3my5sz4dc0",
+                                    "created": 1649296877773,
+                                    "text": "引用限定符",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "// 必须放在最后面，表明只能像可修改的左值赋值\nFoo &operator(const Foo&) &;\n// 类似const，只限于非static成员，并且可以区分重载\n// 如果一个成员函数有引用限定符，则具有相同参数列表的所有版本都必须有引用限定符"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cj3n5nf4pt40",
+                            "created": 1649297464668,
+                            "text": "函数重载",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "**1. 除开:: .\\* . ? : 等符号不能重载外，其他大部分都可以**\n\n**2. 注意成员函数，非成员函数**\n\n- = [] () -> 必须是成员\n- 复合赋值，一般是成员\n- 改变成员自身的，递增，递减，解引用等，通常是成员\n- 算术、相等性、关系、位运算等非成员(对称性)"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cj3rqvvw4dc0",
+                                    "created": 1649310413182,
+                                    "text": "++/--前后置？",
+                                    "priority": 3,
+                                    "note": "1. 前置\n\n- Te operator++();\n- Te operator--();\n\n2. 后置\n\n- 多一个不会使用的int参数\n- Te operator++(int)\n- Te operator--(int)"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cj3sbqun3aw0",
+                                    "created": 1649312047870,
+                                    "text": "类型转换运算符",
+                                    "font-weight": "bold",
+                                    "priority": 3,
+                                    "note": "// 不允许转换成函数或数组类型，但允许转换成指针或者引用类型\noperator type() const;\n\n// 显式的类型转换\n// 如果表达式被用作条件，则编译器会将显式的类型转换自动应用于它\nexplicit operator type() const;\n\n// 如果类中包含一个或多个类型转换，则必须确保再类类型和目标类型之间只存在唯一一种转换类型"
+                                },
+                                "children": []
+                            }
+                        ]
                     }
                 ]
             },
@@ -1162,7 +1207,19 @@
                     "priority": 1,
                     "note": "[capture list]\\(parameter list) -> return type {}\n\n#### 1. capture list\n- 可以捕获所在函数的变量\n- 在创建时拷贝的\n[val] 值，就只能读\n[&val] 引用，可以改变值\n[ptr] 指针，可以改变值\n**隐式捕获**\n- [=] 告诉编译器用值捕获\n- [&] 告诉编译器引用捕获\n\n#### 2. parameter list\n- 参数列表\n\n#### 3. return type\n- 默认void\n- 和函数一样，不能返回引用\n\n#### 4. {}"
                 },
-                "children": []
+                "children": [
+                    {
+                        "data": {
+                            "id": "cj3rxngb5pc0",
+                            "created": 1649310943375,
+                            "text": "函数对象",
+                            "priority": 2,
+                            "font-weight": "bold",
+                            "note": "1. lambda\n\n```c++\n[sz](const string &s) const -> bool {\n\treturn s.szie() >= sz;\n}\n```\n\n2. 产生的类\n\n```c++\nclass SizeComp{\npublic:\n\tSizeComp(size_t n) : sz(n){}\n    bool operator()(\n    \tconst string &s) const{\n       \treturn s.size() > sz;\n        }\nprivate:\n\tsize_t sz;\n}\n\n```\n\n3. 标准库定义了一些函数对象\n\n- less<Type>\n- greater<Type>  ...\n\n4. function类型\n\n- 创建一个可以调用的对象\n- lambda function 函数对象，函数指针等\n\tfunction<T> f;\n"
+                        },
+                        "children": []
+                    }
+                ]
             },
             {
                 "data": {
