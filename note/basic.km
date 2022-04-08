@@ -1332,7 +1332,8 @@
                     "created": 1649312970010,
                     "text": "面向对象",
                     "font-weight": "bold",
-                    "priority": 1
+                    "priority": 1,
+                    "expandState": "collapse"
                 },
                 "children": [
                     {
@@ -1343,7 +1344,7 @@
                             "font-weight": "bold",
                             "priority": 2,
                             "note": "// 基类 可以继承多个类\n```c++\nclass Quote{\npublic:\n\tstd::string isbn() const;\n}\n```\n\n// 派生类\n```c++\n// 声明，不需要包含派生列表\nclass Bluk_quote;\nclass Bluk_quote : Quote{\npublic:\n\tdouble price;\n}\n```\n\n// 不存在基类到派生类的转换\n// dynamic_cast\n\n// 如果一个派生类虚函数需要调用基类的版本，可以使用域运算符来限定\nxx -> Quote::net(42);",
-                            "expandState": "expand"
+                            "expandState": "collapse"
                         },
                         "children": [
                             {
@@ -1385,7 +1386,8 @@
                                     "created": 1649325784950,
                                     "text": "友元",
                                     "font-weight": "bold",
-                                    "priority": 3
+                                    "priority": 3,
+                                    "note": "#### 1. 友元函数\n\n// 可以使用所在类的所有成员(包含protected和private)\n// 友元类的派生类的基类部分也可以访问\n\n#### 2. 友元类\n\n// 类成员拥有的权限跟友元函数一样\n\n\n#### 3. 可以直接用using来访问\n\nusing Basic::v1;"
                                 },
                                 "children": []
                             }
@@ -1422,6 +1424,40 @@
                             "font-weight": "bold",
                             "priority": 2,
                             "note": "// 当使用基类型的引用或指针调用一个虚函数时，将发生动态绑定 -> 决定调用那个函数"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cj4j82uimyg0",
+                    "created": 1649387930495,
+                    "text": "模板",
+                    "priority": 1,
+                    "font-weight": "bold",
+                    "note": "#### 1. 普通使用\n\n```c++\ntemplate<typename T>\nint compare(const T& t1,\n\tconst T& t2){\n\tif (t1 < t2){\n    \treturn -1;\n    }\n    if (t1 > t2){\n    \treturn 1;\n    }\n    return 0;\n}\n```\n\n#### 2. 非类型模板参数\n\n```c++\ntemplate<unsigned N, unsigned M>\nint compare(const char (&p1)[N], \n\tconst char (&p2)[M]){\n\treturn strcmp(p1, p2); \t\n}\n```\n\n#### 3. inline和constexpr的位置\n\n```c++\ntemplate<typename T>  inline/constexpr/const ...\n```\n\n#### 4. 类模板\n\n```c++\ntemplate<typename T>\nclass B{\npublic:\n\ttypedef T value_type;\n    typedef typename vector<T>::size_type size_type;\n    void check(void);\n}\n\n// 定义函数\ntemplate<typename T>\nB<T>::check(void){\n\treturn true;\n}\n```\n\n\n"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cj4niqlgaao0",
+                            "created": 1649400050271,
+                            "text": "友元",
+                            "font-weight": "bold",
+                            "priority": 2,
+                            "note": "1. 以模板的特列作为友元，需要前置声明\n\n```c++\ntemplate <typename T> class Pal;\n...\nfriend class Pal<C>;\n```\n\n2. 以模板作为友元\n\n```c++\ntemplate <typename X> friend class Pal2;\n```"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cj4ofqljai80",
+                            "created": 1649402636293,
+                            "text": "显式实例化",
+                            "priority": 2,
+                            "font-weight": "bold",
+                            "note": "```c++\n// a.cc 实例化ding'yi\ntemplate class B<int>;\n// b.cc 实例化声明\nextern template class B<int>;\n\n```"
                         },
                         "children": []
                     }
